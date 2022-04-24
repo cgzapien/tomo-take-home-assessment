@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import SearchSpices from '../components/search';
 import SearchByHottness from '../components/searchbyhottness.js';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 function Home() {
   const [spices, setSpices] = useState([]);
@@ -27,6 +28,7 @@ function Home() {
     axios.get(`/api/v1/spices/heat?heat=${e.target.value}`)
     console.log(e.target.value)
   }
+ 
   // load spices when the page loads
   const fetchSpiceData = () => {
     axios.get('/api/v1/spices').then((response) => {
@@ -48,17 +50,24 @@ function Home() {
         spiceSearchInput={spiceSearchInput}
       />
       <SearchByHottness handleSpiceHeatnessCheck={handleSpiceHeatnessCheck}/>
-      <div className="spicecontainer">
-        { spices
-          .filter(spice => (`${spice.name}`).toLowerCase().includes(spiceSearchInput.toLowerCase()))
-          .map((spice) => (
-            <div key={spice.id} >
-              <p className="spices">
-              <Link to={`/spices/${spice.id}`}>{spice.name}</Link>
-              </p>
-            </div>
-        ))}
-      </div>
+      <InfiniteScroll 
+        dataLength={spices.length}
+        hasMore={true}
+        height="525px"
+      >
+        <div className="spicecontainer">
+          { spices
+            .filter(spice => (`${spice.name}`).toLowerCase().includes(spiceSearchInput.toLowerCase()))
+            .map((spice) => (
+              <div key={spice.id} >
+                <p className="spices">
+                <Link to={`/spices/${spice.id}`}>{spice.name}</Link>
+                </p>
+              </div>
+          ))}
+        </div>
+
+      </InfiniteScroll>
       <h4 className='categoryHeader'>Blend List</h4>
       <div className="blendcontainer">
         {blends.map((blend) => (

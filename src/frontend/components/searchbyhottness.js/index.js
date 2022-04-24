@@ -2,7 +2,7 @@ import "./index.css"
 
 const SearchByHottness = ({handleSpiceHeatnessCheck}) => {
   return (
-    <form data-testid="hotness-form">
+    <form data-testid="hotness-form" className="heatness-form">
       <label>Choose your level of heatness: </label>
       <label>
         Heat 1:

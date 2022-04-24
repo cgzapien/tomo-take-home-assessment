@@ -1,0 +1,10 @@
+.heatness-form {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .heatness-form {
+    font-size: 20px;
+  }
+  
+}

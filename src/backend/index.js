@@ -14,7 +14,7 @@ const server = new Server({
 
     //spices
     this.get('/v1/spices', spiceRoutes.getSpices);
-    this.get('/v1/spices/2', spiceRoutes.errorSpice);
+    this.get('/v1/spices/2', spiceRoutes.errorSpice); //this spice gives me an error
     this.get('/v1/spices/:id', spiceRoutes.getSpice);
     this.put('/v1/spices/:id', spiceRoutes.updateSpice);
 

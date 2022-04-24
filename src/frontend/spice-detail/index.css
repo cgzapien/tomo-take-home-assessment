@@ -1,3 +1,13 @@
 .spiceDetails {
   text-align: center;
+  font-size: 25px;
+}
+.spice-gohome {
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.errormessage {
+  font-size: 40px;
 }
