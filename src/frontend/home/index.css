@@ -1,0 +1,52 @@
+/* body {
+  background-color: blue;
+} */
+.App {
+  text-align: center;
+  
+}
+.spices {
+  border: 1px solid grey;
+  width: auto;
+  background-color: #ffffff;
+  padding: 5px;
+  margin: 3px;
+  transition-property: all;
+  transition-duration: 4s;
+  transition-delay: 2s;
+}
+.spices:hover {
+  height: 50px;
+  text-align: center;
+}
+.spices > a {
+  text-decoration: none;
+  color: #000000;
+}
+.blends > a {
+  text-decoration: none;
+  color: #000000;
+}
+.categoryHeader {
+  font-size: 25px;
+  margin: 0 0 10px;
+}
+.blends {
+  border: 1px solid grey;
+  width: auto;
+  background-color: #ffffff;
+  padding: 5px;
+  margin: 5px;
+}
+.blendcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.spicecontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}

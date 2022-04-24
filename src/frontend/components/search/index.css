@@ -1,0 +1,21 @@
+.searchInput {
+  padding: 5px;
+  border: 2px solid;
+  color: black;
+  border-radius: 5px;
+  background-color: transparent;
+  width: max-content ;
+  width: 235px;
+}
+.searchInput:focus {
+  outline: none;
+}
+.searchInput::placeholder {
+  color: black;
+}
+.searchBtn {
+  background-color: transparent;
+  padding: 5px;
+  border: 2px solid;
+  border-radius: 5px;
+}
