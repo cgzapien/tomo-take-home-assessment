@@ -2,10 +2,10 @@ import "../search/index.css"
 
 const SearchSpices = (props) => {
 
-  const { handleSpiceSearch, handleSpiceSearchChange,spiceSearchInput } = props
+  const { handleSpiceSearchChange,spiceSearchInput } = props
 
   return (
-    <form onSubmit={handleSpiceSearch} className="search" data-testid="spice-searchform">
+    <form  className="search" data-testid="spice-searchform">
       <input
       className="searchInput"
       type="text"
@@ -14,7 +14,6 @@ const SearchSpices = (props) => {
       onChange={handleSpiceSearchChange}
       data-testid="search-input"
       ></input>
-      {/* <button className="searchBtn">Search</button> */}
     </form>
   )
 }

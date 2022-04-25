@@ -1,5 +1,6 @@
 import { Response } from 'miragejs';
 
+let id = 3
 const blendRoutes = {
   getBlends: (schema, request) => {
     const blends = schema.db.blends;
@@ -11,9 +12,10 @@ const blendRoutes = {
     return blend;
   },
   addBlend: (schema, request) => {
-    const body = JSON.parse(request.requestBody);
-    // add new blend
-    const blendRes = schema.db.blends.create(body);
+    const newBlend = JSON.parse(request.requestBody);
+    newBlend.id = id++
+    // // add new blend
+    const blendRes = schema.db.blends.insert(newBlend);
     return blendRes;
   },
 };

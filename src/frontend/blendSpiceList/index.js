@@ -17,8 +17,7 @@ const BlendSpiceList = ({spiceid}) => {
   },[])
   return (
     <div>
-      <div>{spice.name}</div>
-      <div>{spiceError}</div>
+      <div>Spice Name: {spice.name || spiceError}</div>
     </div>
   )
 }

@@ -6,18 +6,19 @@
   
 }
 .spices {
-  border: 1px solid grey;
+  border: 2px solid grey;
   width: auto;
   background-color: #ffffff;
   padding: 2px;
   margin: 3px;
   transition: height 2s ease-in-out .5s;
+  font-weight: bold;
 }
-/* .spices:hover {
+.spices:hover {
   height: 100px;
   width: 200px;
   text-align: center;
-} */
+}
 .spices > a {
   text-decoration: none;
   color: #000000;
@@ -60,6 +61,7 @@
 }
 @media screen and (max-width: 600px) {
   .spicecontainer {
-    width: 30%;
+    width: 25%;
+    height: 400px;
   }
 }

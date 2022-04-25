@@ -25,12 +25,12 @@ const SpiceDetail = () => {
     };
     fetchData();
   }, []);
-  const heat = (spice.heat === 0) ? <p>No Heat at all!</p> 
-  : (spice.heat === 1) ? <p>&#128293;</p> 
-  : (spice.heat === 2) ? <p>&#128293; &#128293;</p> 
-  : (spice.heat === 3) ? <p>&#128293; &#128293; &#128293;</p> 
-  : (spice.heat === 4) ? <p>&#128293; &#128293; &#128293; &#128293; &#9760;&#65039;</p> 
-  : (spice.heat === 5) ? <p>&#128293; &#128293; &#128293; &#128293; &#128293; &#9760;&#65039;</p> 
+  const heat = (spice.heat === 0) ? <span>No Heat at all!</span> 
+  : (spice.heat === 1) ? <span>&#128293;</span> 
+  : (spice.heat === 2) ? <span>&#128293; &#128293;</span> 
+  : (spice.heat === 3) ? <span>&#128293; &#128293; &#128293;</span> 
+  : (spice.heat === 4) ? <span>&#128293; &#128293; &#128293; &#128293; &#9760;&#65039;</span> 
+  : (spice.heat === 5) ? <span>&#128293; &#128293; &#128293; &#128293; &#128293; &#9760;&#65039;</span> 
   : "";
   const errormessage = (spiceError) ? <p>{spiceError} &#128274;</p> : "";
   return (
@@ -47,7 +47,7 @@ const SpiceDetail = () => {
           <div>Spice Heat Level: {heat }</div>
         </div>  
       }
-      <button className='spice-gohome'  onClick={handleHomeClick}>Go home</button>
+      <button className='spice-gohome' style={{backgroundColor: `#${spice.color}`}}  onClick={handleHomeClick}>Go home</button>
     </div>
   )
 }
