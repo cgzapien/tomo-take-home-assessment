@@ -1,5 +1,5 @@
+import axios from "axios";
 import { useState, } from "react";
-import { useLocation } from "react-router-dom";
 import "./index.css"
 
 const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
@@ -12,7 +12,10 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
     spices: [],
     description: '',
   });
-  console.log('newBlend: ', newBlend);
+  
+  const filterSpices = spices.filter(spice => (newBlend.spices).includes(spice.id))
+  console.log('filterSpices: ', filterSpices);
+  const filterBlends = blends.filter(blend => (newBlend.blends).includes(blend.id))
   const handleBlendSubmit = (e) => {
     e.preventDefault();
     handleBlendAddition(newBlend)
@@ -35,8 +38,8 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
     }));
   };
   return (
-    <div>
-      <h1>Make your own blend</h1>
+    <div className="blendsubmittal">
+      <h1>Create your own blend</h1>
     <form onSubmit={handleBlendSubmit} className="new-blend-form">
       <label htmlFor="name">Give your blend a name: </label>
       <input
@@ -76,10 +79,16 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
       ></input>
       <button type="submit">submit</button>
     </form>
-    <div>
-      <p>New Blend Name: {newBlend.name}</p>
-      <p>New Blend Description: {newBlend.description}</p>
-      <p>New Blend Spices: {newBlend.spices.map(spice => console.log(spice))}</p>
+    <div style={{padding: "20px"}}>
+      <p><b>New Blend Name:</b> {newBlend.name}</p>
+      <p><b>New Blend Description:</b> {newBlend.description}</p>
+      <div><b>Previous blend additions:</b> {filterBlends.map(blend => {
+        return <p key={blend.id}>{  blend.name }</p>
+      } 
+        )}</div>
+      <div><b>New Blend Spices:</b> {filterSpices.map(spice =>{
+        return <p key={spice.id}>{  spice.name }</p>
+        })}</div>
     </div>
     </div>
   )

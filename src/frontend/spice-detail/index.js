@@ -19,9 +19,6 @@ const SpiceDetail = () => {
       await axios.get(`/api/v1/spices/${id}`)
       .then(res => setSpice(res.data))
       .catch(({response}) => setSpiceError(response.data.errors.join("")))
-      
-      // const color = getComputedStyle(document.documentElement).getPropertyValue('--spice-color');
-      // console.log("color",color); style={{backgroundColor: `#${spice.color}`}}
     };
     fetchData();
   }, []);

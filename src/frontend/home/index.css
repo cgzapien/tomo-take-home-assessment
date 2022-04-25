@@ -11,13 +11,14 @@
   background-color: #ffffff;
   padding: 2px;
   margin: 3px;
-  transition: height 2s ease-in-out .5s;
   font-weight: bold;
 }
+
 .spices:hover {
   height: 100px;
   width: 200px;
   text-align: center;
+  background-color: aqua;
 }
 .spices > a {
   text-decoration: none;
@@ -43,7 +44,7 @@
   flex-direction: row;
   justify-content: center;
 }
-.spicecontainer {
+.spicescontainer {
   display: flex;
   
   flex-direction: row;
@@ -60,7 +61,7 @@
   display: none;
 }
 @media screen and (max-width: 600px) {
-  .spicecontainer {
+  .spicescontainer {
     width: 25%;
     height: 400px;
   }

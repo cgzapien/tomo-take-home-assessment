@@ -47,7 +47,7 @@ function Home() {
         handleSpiceSearchChange={handleSpiceSearchChange}
         spiceSearchInput={spiceSearchInput}
       />
-      <SearchByHottness handleSpiceHeatnessCheck={handleSpiceHeatnessCheck}/>
+      {/* <SearchByHottness handleSpiceHeatnessCheck={handleSpiceHeatnessCheck}/> */}
       <InfiniteScroll 
         dataLength={spices.length}
         hasMore={true}
@@ -58,11 +58,11 @@ function Home() {
           </p>
         }
       >
-        <div className="spicecontainer">
+        <div className="spicescontainer">
           { spices
             .filter(spice => (`${spice.name}`).toLowerCase().includes(spiceSearchInput.toLowerCase()))
             .map((spice) => (
-              <div key={spice.id} >
+              <div key={spice.id} className="spicebox">
                 <p className="spices">
                 <Link to={`/spices/${spice.id}`}>{spice.name}</Link>
                 </p>
@@ -70,9 +70,7 @@ function Home() {
           ))}
         </div>
       </InfiniteScroll>
-      <AddNewBlend handleBlendAddition={handleBlendAddition} spices={spices} blends={blends}/>
       <h4 className='categoryHeader'>Blend List</h4>
-      <button><Link to={`/addblend/`} state={{ from: "opp"}}>Make your own blend</Link></button>
       <div className="blendcontainer">
         {blends.map((blend) => (
           <div key={blend.id} >
@@ -82,6 +80,7 @@ function Home() {
           </div>
         ))}
       </div>
+      <AddNewBlend handleBlendAddition={handleBlendAddition} spices={spices} blends={blends}/>
     </div>
   );
 }
