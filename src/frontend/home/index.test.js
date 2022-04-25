@@ -13,5 +13,6 @@ test('renders home page', async () => {
     render(<Home />);
   });
   const homeElement = screen.getByText(/spice/i);
+  console.log('homeElement: ', homeElement);
   expect(homeElement).toBeInTheDocument();
 });

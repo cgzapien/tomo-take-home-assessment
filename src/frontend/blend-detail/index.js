@@ -3,13 +3,18 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./index.css"
 import BlendSpiceList from "../blendSpiceList";
+import { useHistory } from "react-router-dom";
+import BlendListOfBlends from "../blend-list-of-blends";
 // get blend API is at /api/v1/blends/:id
 
 const BlendDetail = () => {
   const { id } = useParams();
   const [blend, setBlend] = useState({});
   const { name, description, spices, blends } = blend;
-
+  const history = useHistory();
+  const handleHomeClick = () => {
+    history.push("/")
+  };
   useEffect(() => {
     async function fetchData() {
       const { data } = await axios.get(`/api/v1/blends/${id}`);
@@ -24,21 +29,14 @@ const BlendDetail = () => {
       {blend && <div>
           <div>Blend Name: {name}</div> 
           <div>Blend Description: {description}</div>
-          {/* {blends ?
+          {blends ?
           <div>
             <h4>Blends used to make this blend:</h4>
-            {blends.map(blend => {
-              return (
-                <div>
-                  <div>{blend.name}</div>
-                </div>
-              )
-            }
-            )}
+            {blends.map(blend => <BlendListOfBlends key={blend} blend={blend}/>)}
           </div>
           :
           "" 
-          } */}
+          }
           {spices? 
             <div>
               <h4>Spices used to make this blend:</h4>
@@ -51,6 +49,7 @@ const BlendDetail = () => {
           }
         </div>
       }
+      <button className='blend-gohome'   onClick={handleHomeClick}>Go home</button>
     </div>
   );
 };

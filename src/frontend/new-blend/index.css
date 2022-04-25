@@ -14,3 +14,16 @@
 .blendsubmittal {
   margin-bottom: 10px;
 }
+.blendpreview {
+  display: flex;
+  flex-direction: column;
+  
+}
+.blendpreview > div {
+  margin: 5px 0;
+}
+@media screen and (max-width: 600px) {
+  .spice-select {
+    width: 200px;
+  }
+}

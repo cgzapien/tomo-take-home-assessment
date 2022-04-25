@@ -41,7 +41,7 @@ function Home() {
     });
   }, []);
   return (
-    <div className="App">
+    <div className="App" data-testid="app">
       <h4 className='categoryHeader'>Spice List</h4>
       <SearchSpices 
         handleSpiceSearchChange={handleSpiceSearchChange}
@@ -64,7 +64,7 @@ function Home() {
             .map((spice) => (
               <div key={spice.id} className="spicebox">
                 <p className="spices">
-                <Link to={`/spices/${spice.id}`}>{spice.name}</Link>
+                <Link to={`/spices/${spice.id}`} >{spice.name}</Link>
                 </p>
               </div>
           ))}

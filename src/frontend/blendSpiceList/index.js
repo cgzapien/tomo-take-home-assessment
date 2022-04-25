@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 
 const BlendSpiceList = ({spiceid}) => {
   const [spice, setSpice] = useState({})
-  console.log('spice: ', spice);
   const [spiceError, setSpiceError] = useState("")
 
   useEffect(() => {
@@ -17,7 +16,7 @@ const BlendSpiceList = ({spiceid}) => {
   },[])
   return (
     <div>
-      <div>Spice Name: {spice.name || spiceError}</div>
+      <div>Spice Name: {spice.name || (spiceError ? "this blend contains a secret spice" : "")}</div>
     </div>
   )
 }

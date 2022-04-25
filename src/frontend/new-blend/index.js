@@ -3,8 +3,6 @@ import { useState, } from "react";
 import "./index.css"
 
 const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
-
-  
   const [newBlend, setNewBlend] = useState({
     id: "",
     name: '',
@@ -14,7 +12,7 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
   });
   
   const filterSpices = spices.filter(spice => (newBlend.spices).includes(spice.id))
-  console.log('filterSpices: ', filterSpices);
+
   const filterBlends = blends.filter(blend => (newBlend.blends).includes(blend.id))
   const handleBlendSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +50,8 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
       ></input>
       <br/>
       <label>select your spices</label>
-      <select name="spices" onChange={handleSpiceOptions} value={newBlend.spices || ""} multiple={false} >
+      <select className="spice-select" name="spices" onChange={handleSpiceOptions} value={newBlend.spices || ""} multiple={true} >
+        {!spices && <option value="">choose from list</option>}
         {spices && spices.map(spice => (
           <option name="spices" key={spice.id} value={spice.id}>
             {spice.name}
@@ -61,7 +60,7 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
       </select>
       <br/>
       <label htmlFor="blends">select from previous blends</label>
-      <select name="blends" onChange={handleBlendsOptions} value={newBlend.blends || ""} multiple={false} >
+      <select name="blends" onChange={handleBlendsOptions} value={newBlend.blends || ""} multiple={true} >
         {blends && blends.map(blend => (
           <option name="blends" key={blend.id} value={blend.id}>
             {blend.name}
@@ -80,15 +79,19 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
       <button type="submit">submit</button>
     </form>
     <div style={{padding: "20px"}}>
-      <p><b>New Blend Name:</b> {newBlend.name}</p>
-      <p><b>New Blend Description:</b> {newBlend.description}</p>
-      <div><b>Previous blend additions:</b> {filterBlends.map(blend => {
-        return <p key={blend.id}>{  blend.name }</p>
-      } 
-        )}</div>
-      <div><b>New Blend Spices:</b> {filterSpices.map(spice =>{
-        return <p key={spice.id}>{  spice.name }</p>
-        })}</div>
+        <h2><u>Blend being submitted</u></h2>
+      <div className="blendpreview">
+        <div><b>New Blend Name:</b> {newBlend.name}</div>
+        <div><b>New Blend Description:</b> {newBlend.description}</div>
+        <div><b>Previous blend additions:</b> {filterBlends.map(blend => {
+          return <p key={blend.id}>{  blend.name }</p>
+        } 
+          )}</div>
+        <div><b>New Blend Spices:</b> {filterSpices.map(spice =>{
+          return <p key={spice.id}>{  spice.name }</p>
+          })}</div>
+
+      </div>
     </div>
     </div>
   )
