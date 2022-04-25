@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState, } from "react";
 import "./index.css"
 
@@ -11,9 +10,9 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
     description: '',
   });
   
-  const filterSpices = spices.filter(spice => (newBlend.spices).includes(spice.id))
+  const filterSpices = spices && spices.filter(spice => (newBlend.spices).includes(spice.id))
 
-  const filterBlends = blends.filter(blend => (newBlend.blends).includes(blend.id))
+  const filterBlends = blends && blends.filter(blend => (newBlend.blends).includes(blend.id))
   const handleBlendSubmit = (e) => {
     e.preventDefault();
     handleBlendAddition(newBlend)
@@ -36,7 +35,7 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
     }));
   };
   return (
-    <div className="blendsubmittal">
+    <div className="blendsubmittal" data-testid="new-blend-form-component">
       <h1>Create your own blend</h1>
     <form onSubmit={handleBlendSubmit} className="new-blend-form">
       <label htmlFor="name">Give your blend a name: </label>
@@ -47,6 +46,7 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
         value={newBlend.name}
         onChange={handleNewBlendChange}
         required
+        data-testid="new-blend-form-input-name"
       ></input>
       <br/>
       <label>select your spices</label>
@@ -60,7 +60,7 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
       </select>
       <br/>
       <label htmlFor="blends">select from previous blends</label>
-      <select name="blends" onChange={handleBlendsOptions} value={newBlend.blends || ""} multiple={true} >
+      <select className="blend-select" name="blends" onChange={handleBlendsOptions} value={newBlend.blends || ""} multiple={true} >
         {blends && blends.map(blend => (
           <option name="blends" key={blend.id} value={blend.id}>
             {blend.name}
@@ -76,18 +76,18 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
         value={newBlend.description}
         onChange={handleNewBlendChange}
       ></input>
-      <button type="submit">submit</button>
+      <button type="submit" data-testid="new-blend-form-button">submit</button>
     </form>
     <div style={{padding: "20px"}}>
         <h2><u>Blend being submitted</u></h2>
       <div className="blendpreview">
-        <div><b>New Blend Name:</b> {newBlend.name}</div>
+        <div data-testid="new-blend-name"><b>New Blend Name:</b> {newBlend.name}</div>
         <div><b>New Blend Description:</b> {newBlend.description}</div>
-        <div><b>Previous blend additions:</b> {filterBlends.map(blend => {
+        <div><b>Previous blend additions:</b> { filterBlends && filterBlends.map(blend => {
           return <p key={blend.id}>{  blend.name }</p>
         } 
           )}</div>
-        <div><b>New Blend Spices:</b> {filterSpices.map(spice =>{
+        <div><b>New Blend Spices:</b> { filterSpices &&  filterSpices.map(spice =>{
           return <p key={spice.id}>{  spice.name }</p>
           })}</div>
 

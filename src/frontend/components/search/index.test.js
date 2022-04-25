@@ -21,15 +21,5 @@ describe("search form component", () => {
     expect(input).toHaveAttribute("type", "text")
     expect(input).toBeTruthy()
   })
-  // test("change on input", async () => {
-  //   await act(async () => {
-  //     const { getByTestId } = render(<SearchSpices />)
-  //     const input = getByTestId("spice-search")
-  //     console.log('input: ', input);
-  //     await fireEvent.change(input, {target: {value: 'adobo'}})
-  //     expect(input.value).toBe('adobo')
-  //   })
-    
-  // })
 })
 

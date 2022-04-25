@@ -12,7 +12,7 @@ test('renders home page', async () => {
   await act(async () => {
     render(<Home />);
   });
-  const homeElement = screen.getByText(/spice/i);
-  console.log('homeElement: ', homeElement);
+  //const homeElement = screen.getByText(/spice/i);
+  const homeElement = screen.getByTestId("app")
   expect(homeElement).toBeInTheDocument();
 });

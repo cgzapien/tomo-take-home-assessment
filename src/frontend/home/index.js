@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import SearchSpices from '../components/search';
-import SearchByHottness from '../components/searchbyhottness.js';
+
 import InfiniteScroll from 'react-infinite-scroll-component';
 import AddNewBlend from '../new-blend';
 
@@ -14,11 +14,6 @@ function Home() {
 
   const handleSpiceSearchChange = (e) => {
     setSpiceSearchInput(e.target.value)
-  }
-  const handleSpiceHeatnessCheck = (e) => {
-    axios.get(`/api/v1/spices/heat?heat=${e.target.value}`)
-      .then(res => console.log(res))
-    console.log(e.target.value)
   }
   //create new blend and return data to blend array state
   const handleBlendAddition = (newBlend) => {
@@ -47,7 +42,6 @@ function Home() {
         handleSpiceSearchChange={handleSpiceSearchChange}
         spiceSearchInput={spiceSearchInput}
       />
-      {/* <SearchByHottness handleSpiceHeatnessCheck={handleSpiceHeatnessCheck}/> */}
       <InfiniteScroll 
         dataLength={spices.length}
         hasMore={true}

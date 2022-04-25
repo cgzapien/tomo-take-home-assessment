@@ -25,5 +25,12 @@
 @media screen and (max-width: 600px) {
   .spice-select {
     width: 200px;
+    font-size: 12px;
+  }
+  .new-blend-form {
+    font-size: 12px;
+  }
+  .blend-select {
+    font-size: 12px;
   }
 }
