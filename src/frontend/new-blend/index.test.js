@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, cleanup, act, fireEvent } from "@testing-library/react";
+import { render, cleanup, act, fireEvent } from "@testing-library/react";
 
 import NewBlend from "./index";
 

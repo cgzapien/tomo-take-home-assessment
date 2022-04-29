@@ -21,7 +21,7 @@ function Home() {
     axios.post('api/v1/blends/',newBlendStringify)
       .then(res => {
         setBlends(prevBlends => [...prevBlends, res.data])})
-    
+      .catch(err => console.log(err))
   }
   // load spices when the page loads
   const fetchSpiceData = () => {

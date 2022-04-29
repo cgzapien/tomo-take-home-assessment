@@ -16,7 +16,13 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
   const handleBlendSubmit = (e) => {
     e.preventDefault();
     handleBlendAddition(newBlend)
-
+    setNewBlend({
+      id: "",
+      name: '',
+      blends: [],
+      spices: [],
+      description: '',
+    })
   };
   const handleNewBlendChange = (e) => {
     const {name, value} = e.target
@@ -51,7 +57,6 @@ const AddNewBlend = ({handleBlendAddition, spices, blends}) => {
       <br/>
       <label>select your spices</label>
       <select className="spice-select" name="spices" onChange={handleSpiceOptions} value={newBlend.spices || ""} multiple={true} >
-        {!spices && <option value="">choose from list</option>}
         {spices && spices.map(spice => (
           <option name="spices" key={spice.id} value={spice.id}>
             {spice.name}
